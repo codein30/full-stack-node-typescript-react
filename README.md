@@ -65,3 +65,5 @@ Edit `.barreslby.json` to customize it:
   "delete": true
 }
 ```
+git remote add origin https://[TOKEN]@github.com/[REPO-OWNER]/[REPO-NAME]
+git remote add origin https://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@github.com/gitworkcode/hello-rest-client-node.git
