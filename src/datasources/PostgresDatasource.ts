@@ -5,7 +5,7 @@ import {Logger} from "@tsed/logger";
 export const POSTGRES_DATA_SOURCE = Symbol.for("PostgresDataSource");
 export const PostgresDataSource = new DataSource({
   type: "postgres",
-  entities: [],
+  entities: entitiesPaths(process.env.NODE_ENV),
   host: "postgres",
   port: 5432,
   username: "postgres",
@@ -30,3 +30,10 @@ registerProvider<DataSource>({
     }
   }
 });
+
+function entitiesPaths(env?: string) {
+  if(env === 'production') {
+    return ['dist/entities/**.js']
+  }
+  return ['src/entities/*.ts']
+}
