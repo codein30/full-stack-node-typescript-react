@@ -14,6 +14,10 @@ export class UserService {
     return this.postgresDataSource.manager.create(UserEntity, user);
   }
 
+  getAllUsers(): Promise<UserEntity[]>{
+    return this.postgresDataSource.manager.find(UserEntity);
+  }
+
   $onInit() {
     if (this.postgresDataSource.isInitialized) {
       console.log("INIT");

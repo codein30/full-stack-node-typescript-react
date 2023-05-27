@@ -17,7 +17,7 @@ export class UsersController {
   }
 
   @Get("/")
-  get() {
-    return "hello";
+  get(): Promise<UserEntity[]> {
+    return this.userServices.getAllUsers();
   }
 }
