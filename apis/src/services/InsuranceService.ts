@@ -18,7 +18,7 @@ export class InsuranceService {
   @Inject(POSTGRES_DATA_SOURCE)
   protected postgresDataSource: DataSource;
 
-  async create(insurance: InsuranceModel): Promise<number> {
+  async create(insurance: InsuranceModel): Promise<string> {
     const {
       type,
       firstName,
@@ -73,7 +73,7 @@ export class InsuranceService {
     return createdUser.id;
   }
 
-  async getInsurance(id: number): Promise<InsuranceModel>{
+  async getInsurance(id: string): Promise<InsuranceModel>{
     const userRepository = this.postgresDataSource.getRepository(UserEntity);
     const user = await userRepository.findOne({
         where: {
@@ -89,7 +89,7 @@ export class InsuranceService {
     return toInsuranceDTO(user as UserEntity);
   }
 
-  async update(userId: number, insurance: InsuranceModel): Promise<number>{
+  async update(userId: string, insurance: InsuranceModel): Promise<string>{
     const {
       type,
       firstName,

@@ -18,13 +18,13 @@ export class InsuranceController {
 
   @Get("/:id")
   get(@PathParams("id") id: string): Promise<InsuranceModel> {
-    return this.insuranceServices.getInsurance(Number(id));
+    return this.insuranceServices.getInsurance(id);
   }
 
   @Put('/:userId')
   async update(@PathParams('userId') userId: string, @BodyParams() insurance: InsuranceModel): Promise<string> {
     console.log('updating insurance controller...', userId);
-    const id =  await this.insuranceServices.update(Number(userId), insurance);
+    const id =  await this.insuranceServices.update(userId, insurance);
     return `${process.env.BASE_URL}?id=${userId}`;
   }
 

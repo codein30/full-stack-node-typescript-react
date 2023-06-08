@@ -2,9 +2,10 @@ import {
   Default, 
   Property, 
   Required, 
+  MinLength,
+  MaxLength,
   CollectionOf
 } from "@tsed/schema";
-import {Range, ExclusiveRange} from "../decorators/Range"; // custom decorator
 import { INSURANCE_TYPE } from "../types";
 import { UserModel } from "./UserModel";
 import { VehicleModel } from "./VehicleModel";
@@ -35,6 +36,8 @@ export class InsuranceModel {
   @Property()
   @Required()
   @CollectionOf(VehicleModel)
+  @MinLength(1)
+  @MaxLength(3)
   vehicles: VehicleModel[];
 
   @Property()

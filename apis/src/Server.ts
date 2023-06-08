@@ -7,7 +7,7 @@ import "@tsed/swagger";
 import {config} from "./config/index";
 import * as v1 from "./controllers/v1/index";
 import * as pages from "./controllers/pages/index";
-import "./keywords/RangeKeyword";
+// import "./keywords/RangeKeyword";
 // import "./keywords/MinAgeKeyword";
 
 @Configuration({

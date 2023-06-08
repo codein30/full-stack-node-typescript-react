@@ -1,5 +1,4 @@
 import {Format, Property, Required} from "@tsed/schema";
-import { MinAge } from "../decorators/MinAge";
 import {Entity} from "typeorm";
 
 @Entity()
@@ -15,7 +14,6 @@ export class UserModel {
   @Format("date")
   @Required()
   @Property()
-  @MinAge(16)
   birthDate: Date;
 
   @Property()

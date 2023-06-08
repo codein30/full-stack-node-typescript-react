@@ -13,10 +13,9 @@ import { UserEntity } from './UserEntity';
 
 @Entity()
 export class VehicleEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
-    @Required()
     @Column()
     @Default(ADRESS_TYPE.MAIN)
     type: ADRESS_TYPE;

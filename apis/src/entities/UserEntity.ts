@@ -7,8 +7,8 @@ import { DependentEntity } from "./DependentEntity";
 
 @Entity()
 export class UserEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
   @Column()
   @MaxLength(100)

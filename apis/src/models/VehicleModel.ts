@@ -1,7 +1,9 @@
 import {
     Default,
     Required,
-    Property
+    Property,
+    Minimum,
+    Maximum
 } from '@tsed/schema';
 import { ADRESS_TYPE } from '../types/index';
 
@@ -17,7 +19,9 @@ export class VehicleModel {
 
     @Required()
     @Property()
-    year: Number = 0;
+    @Minimum(1985)
+    @Maximum(Number(new Date().getFullYear() + 1))
+    year: Number;
 
     @Required()
     @Property()

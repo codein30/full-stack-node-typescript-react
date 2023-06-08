@@ -13,10 +13,9 @@ import {
 
 @Entity()
 export class InsuranceEntity {
-    @PrimaryGeneratedColumn()
-    id: number;
+    @PrimaryGeneratedColumn("uuid")
+    id: string;
 
-    @Required()
     @Column()
     @Default(INSURANCE_TYPE.BASIC)
     type: INSURANCE_TYPE;
