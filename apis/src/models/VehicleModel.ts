@@ -19,8 +19,6 @@ export class VehicleModel {
 
     @Required()
     @Property()
-    @Minimum(1985)
-    @Maximum(Number(new Date().getFullYear() + 1))
     year: Number;
 
     @Required()

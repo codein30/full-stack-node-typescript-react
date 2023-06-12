@@ -1,32 +1,24 @@
-// import "@tsed/ajv";
-// import {PlatformTest} from "@tsed/common";
-// import {getJsonSchema} from "@tsed/schema";
-// import {Product} from "./Product";
-// import "../keywords/RangeKeyword";
+import {Keyword, KeywordMethods} from "@tsed/ajv";
+import {array, number} from "@tsed/schema";
 
-// describe("Product", () => {
-//   beforeEach(PlatformTest.create);
-//   afterEach(PlatformTest.reset);
+@Keyword({
+  keyword: "age",
+  type: "number",
+  schemaType: "array",
+  implements: ["exclusiveAgeRange"],
+  metaSchema: array().items([number(), number()]).minItems(2).additionalItems(false)
+})
+class AgeKeyword implements KeywordMethods {
+  compile([min, max]: number[], parentSchema: any) {
+    const myAge = (data: any) => {
+      const ageDifMs = Date.now() - new Date(data).getTime();
+      const ageDate = new Date(ageDifMs);
+      const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
 
-//   it("should call custom keyword validation (compile)", () => {
-//     const ajv = PlatformTest.get<any>(Ajv);
-//     const schema = getJsonSchema(Product, {customKeys: true});
-//     const validate = ajv.compile(schema);
-
-//     expect(schema).to.deep.equal({
-//       properties: {
-//         price: {
-//           exclusiveRange: true,
-//           range: [10, 100],
-//           type: "number"
-//         }
-//       },
-//       type: "object"
-//     });
-
-//     expect(validate({price: 10.01})).toEqual(true);
-//     expect(validate({price: 99.99})).toEqual(true);
-//     expect(validate({price: 10})).toEqual(false);
-//     expect(validate({price: 100})).toEqual(false);
-//   });
-// });
+    return (data: any) => {
+      return myAge(data) >= min && myAge(data) <= max
+    }
+  }
+}

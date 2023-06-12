@@ -4,13 +4,15 @@ import {
   Required, 
   MinLength,
   MaxLength,
-  CollectionOf
+  CollectionOf,
+  Optional
 } from "@tsed/schema";
 import { INSURANCE_TYPE } from "../types";
 import { UserModel } from "./UserModel";
 import { VehicleModel } from "./VehicleModel";
 import { AddressModel } from "./AddressModel";
 import {Format} from "@tsed/schema";
+import {Age} from "../decorators/MinAge"; // custom decorator
 
 export class InsuranceModel {
   @Required()
@@ -25,8 +27,10 @@ export class InsuranceModel {
   @Required()
   lastName: string;
 
-  @Required()
   @Format("date")
+  @Required()
+  @Property()
+  @Age(16)
   birthDate: Date;
 
   @Property()

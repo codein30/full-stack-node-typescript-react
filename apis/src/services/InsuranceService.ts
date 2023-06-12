@@ -69,7 +69,6 @@ export class InsuranceService {
     user.insurance = insuranceEntity;
   await this.postgresDataSource.manager.save(insuranceEntity);
     const createdUser = await this.postgresDataSource.manager.save(user);
-    console.log('createdUser is ', createdUser);
     return createdUser.id;
   }
 
@@ -99,7 +98,6 @@ export class InsuranceService {
       vehicles,
       addresses
     } = insurance;
-    console.log('insurance entity update')
     // 1. Update users fields
     const userRepository = this.postgresDataSource.getRepository(UserEntity);
     const updatedUser = await userRepository.findOne({
@@ -161,7 +159,6 @@ export class InsuranceService {
 
   $onInit() {
     if (this.postgresDataSource.isInitialized) {
-      console.log("INIT");
     }
   }
 }

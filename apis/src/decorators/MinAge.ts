@@ -1,5 +1,9 @@
 import {CustomKey} from "@tsed/schema";
 
-export function MinAge(minAge: number) {
-  return CustomKey("minAge", minAge);
+export function Age(min: any) {
+  return CustomKey("age", [min]);
+}
+
+export function ExclusiveAge(bool: boolean) {
+  return CustomKey("exclusiveAge", bool);
 }

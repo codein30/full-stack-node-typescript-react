@@ -1,19 +1,26 @@
 import {Keyword, KeywordMethods} from "@tsed/ajv";
-import {array, number} from "@tsed/schema";
+import {array, number, object} from "@tsed/schema";
 
 @Keyword({
-  keyword: "minAge",
-  type: "object"
+  keyword: "age",
+  type: undefined,
+  schemaType: "array",
+  implements: ["exclusiveAge"],
+  metaSchema: array().items([]).minItems(1).additionalItems(false)
 })
-class MinAgeKeyword implements KeywordMethods {
-  compile(minAge: any) {
-    return (birthday: any) => {
-      const ageDifMs = Date.now() - new Date(birthday).getTime();
+class RangeKeyword implements KeywordMethods {
+  compile([min]: any[], parentSchema: any) {
+    const myAge = (data: any) => {
+      const ageDifMs = Date.now() - new Date(data).getTime();
       const ageDate = new Date(ageDifMs);
-      const myAge = Math.abs(ageDate.getUTCFullYear() - 1970);
-      console.log('ndate is ', myAge);
-      console.log(myAge  >= minAge );
-      return myAge >= minAge
+      const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
+    return parentSchema.exclusiveRange === true ? (data: any) => {
+      return  myAge(data) > Number(min);
+    }: (data: any) => {
+      return myAge(data) >= Number(min);
     };
   }
 }

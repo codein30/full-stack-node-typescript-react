@@ -1,12 +1,14 @@
 import {
     Default,
     Required,
-    Property
+    Property,
+    Format,
+    object
 } from '@tsed/schema';
-
 import {
     ADRESS_TYPE 
 } from '../types/index';
+import {Age} from "../decorators/MinAge"; // custom decorator
 
 export class AddressModel {
     @Required()

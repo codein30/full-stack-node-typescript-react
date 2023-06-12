@@ -33,7 +33,6 @@ export const Provider = ({ children }: IProps) => {
         await HttpClient
         .get('/rest/calendars')
         .then((calendars) => {
-          console.log('calendars: ', calendars);
         });
 
         return dispatch({ type: AppContextActions.CreateNewItem })

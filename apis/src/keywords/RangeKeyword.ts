@@ -10,6 +10,11 @@ import {array, number} from "@tsed/schema";
 })
 class RangeKeyword implements KeywordMethods {
   compile([min, max]: number[], parentSchema: any) {
-    return parentSchema.exclusiveRange === true ? (data: any) => data > min && data < max : (data: any) => data >= min && data <= max;
+
+    return parentSchema.exclusiveRange === true ? (data: any) => {
+      return  data > min && data < max 
+    }: (data: any) => {
+      return data >= min && data <= max
+    };
   }
 }

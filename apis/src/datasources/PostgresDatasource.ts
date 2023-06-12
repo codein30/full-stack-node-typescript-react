@@ -36,6 +36,5 @@ function entitiesPaths(env?: string) {
   if(env === 'production') {
     return ['dist/entities/**.js']
   }
-  console.log('entities?')
   return ['src/entities/*.ts']
 }
