@@ -5,6 +5,7 @@ interface IProps {
     onClick?(): void;
     type?: "button" | "submit";
     children: ReactNode;
+    center?: boolean;
 }
 
 export const Button = ({ type = "button", children, ...rest }: IProps) => {

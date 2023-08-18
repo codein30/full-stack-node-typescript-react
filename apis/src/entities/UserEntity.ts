@@ -24,16 +24,16 @@ export class UserEntity {
   @Required()
   birthDate: Date;
 
-  @OneToMany(() => AddressEntity, (address) => address.user)
+  @OneToMany(() => AddressEntity, (address) => address.user, { onDelete: 'CASCADE' })
   addresses: AddressEntity[];
 
-  @OneToMany(() => DependentEntity, (dependent) => dependent.user)
+  @OneToMany(() => DependentEntity, (dependent) => dependent.user, { onDelete: 'CASCADE' })
   dependents: DependentEntity[];
 
-  @OneToOne(() => InsuranceEntity)
+  @OneToOne(() => InsuranceEntity, { onDelete: 'CASCADE' })
   @JoinColumn()
   insurance: InsuranceEntity;
 
-  @OneToMany(() => VehicleEntity, (vehicle) => vehicle.user)
+  @OneToMany(() => VehicleEntity, (vehicle) => vehicle.user, { onDelete: 'CASCADE' })
   vehicles: VehicleEntity[];
 }

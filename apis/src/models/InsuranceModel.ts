@@ -11,10 +11,14 @@ import { INSURANCE_TYPE } from "../types";
 import { UserModel } from "./UserModel";
 import { VehicleModel } from "./VehicleModel";
 import { AddressModel } from "./AddressModel";
-import {Format} from "@tsed/schema";
-import {Age} from "../decorators/MinAge"; // custom decorator
+import { Format } from "@tsed/schema";
+import { Age } from "../decorators/MinAge"; // custom decorator
 
 export class InsuranceModel {
+  @Property()
+  @Optional()
+  userId: string;
+
   @Required()
   @Default(INSURANCE_TYPE.BASIC)
   type: INSURANCE_TYPE;

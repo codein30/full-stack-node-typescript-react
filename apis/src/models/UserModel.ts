@@ -1,9 +1,12 @@
-import {Format, Property, Required} from "@tsed/schema";
+import {Format, Property, Required, Optional} from "@tsed/schema";
 import {Entity} from "typeorm";
-import {Range, ExclusiveRange} from "../decorators/Range"; // custom decorator
 
 @Entity()
 export class UserModel {
+  @Property()
+  @Optional()
+  id: string;
+
   @Required()
   @Property()
   firstName: string;

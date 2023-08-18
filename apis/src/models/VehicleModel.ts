@@ -3,15 +3,20 @@ import {
     Required,
     Property,
     Minimum,
-    Maximum
+    Maximum,
+    Optional,
 } from '@tsed/schema';
-import { ADRESS_TYPE } from '../types/index';
+import { VEHICLE_TYPE } from '../types/index';
 
 export class VehicleModel {
+    @Property()
+    @Optional()
+    id: string;
+
     @Required()
     @Property()
-    @Default(ADRESS_TYPE.MAIN)
-    type: ADRESS_TYPE;
+    @Default(VEHICLE_TYPE.MAIN)
+    type: VEHICLE_TYPE;
 
     @Required()
     @Property()
@@ -19,6 +24,8 @@ export class VehicleModel {
 
     @Required()
     @Property()
+    @Minimum(1985)
+    @Maximum(new Date().getFullYear() + 1)
     year: Number;
 
     @Required()

@@ -20,14 +20,6 @@ const extractBody = response => {
 }
 
 export default {
-  async get (url) {
-    const response = await checkStatus(await fetch(url, {
-      method: 'GET'
-    }))
-
-    return extractBody(response)
-  },
-
   async post (url, body, { headers = {}, ...options }) {
     const response = await checkStatus(await fetch(url, {
       method: 'POST',
@@ -40,5 +32,49 @@ export default {
     }))
 
     return extractBody(response)
-  }
+  },
+
+  async get (url) {
+    const response = await checkStatus(await fetch(url, {
+      method: 'GET'
+    }))
+
+    return extractBody(response)
+  },
+
+  async put(url, body, { headers = {}, ...options }) {
+    const response = await checkStatus(await fetch(url, {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body),
+      ...options
+    }))
+
+    return extractBody(response)
+  },
+
+  async validate (url, body, { headers = {}, ...options }) {
+    const response = await checkStatus(await fetch(url, {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body),
+      ...options
+    }))
+
+    return extractBody(response)
+  },
+
+  async delete (url) {
+    const response = await checkStatus(await fetch(url, {
+      method: 'DELETE'
+    }))
+
+    return extractBody(response)
+  },
 }

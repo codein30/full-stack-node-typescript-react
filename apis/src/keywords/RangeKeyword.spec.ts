@@ -7,6 +7,5 @@ describe("Product", () => {
   it("should call custom keyword validation (compile)", () => {
     const schema = {minAge: Object(16), exclusiveMinAge: true}
     const validate = ajv.compile(schema);
-    console.log(validate(new Date("2018-6-20")))
   });
 });

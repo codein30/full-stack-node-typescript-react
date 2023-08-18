@@ -2,17 +2,38 @@ import { Styles } from "./styles";
 import { Button } from "../button";
 import { Item } from "../item";
 import { useContextHook } from '../../context/hook';
+import { IItem } from "../../interfaces/IItem";
+import { ADDRESSES, DEPENDENTS, VEHICLES } from "../../utils/Constants";
+import { childConvertType } from "../../utils/helpers";
 
-export const ListItems = () => {
+interface IProps {
+    updateForm: (key: any, value: any) => void;
+    itemType: string;
+    insuranceItem: IItem;
+    items: any[];
+}
 
-    const { state, createNewItem } = useContextHook()
+export const ListItems = ({updateForm, insuranceItem, itemType, items}: IProps) => {
 
+    const { state, createChildItem } = useContextHook()
+    const customStyle = items.length === 0? {margin: "auto"}: {};
     return (
-        <Styles.Container>
-            <Button onClick={createNewItem}>Create new person</Button>
+        <Styles.Container style={customStyle}>
+            <Button
+                onClick={() => 
+                { 
+                    return createChildItem({parentItem: insuranceItem, childPayload: {}, childType: childConvertType(itemType)})}
+                }>Click to Add {itemType}</Button>
             {
-                state.items.map((item, index) => (
-                    <Item key={item.id} position={index} {...item} />
+                items.map((item, index) => (
+                    <Item  
+                        key={item.id}
+                        position={index} 
+                        itemType={itemType}
+                        insuranceItem={insuranceItem}
+                        item={item}
+                        updateForm={updateForm}
+                    />
                 ))
             }
         </Styles.Container>

@@ -39,6 +39,6 @@ export class AddressEntity {
     @Column()
     zipCode: number;
 
-    @ManyToOne(() => UserEntity, (user) => user.addresses)
+    @ManyToOne(() => UserEntity, (user) => user.addresses, { onDelete: 'CASCADE' })
     user: UserEntity;
 }

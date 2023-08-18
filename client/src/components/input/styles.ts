@@ -13,7 +13,6 @@ const Label = styled.label`
 
 const Input = styled.input`
     border: 1px solid ${({ theme }) => theme.borderColor};
-    color: ${({ theme }) => theme.color};
     padding: 13px 10px;
     border-radius: 5px;
     background: ${({ theme }) => theme.background};

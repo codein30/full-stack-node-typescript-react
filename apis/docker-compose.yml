@@ -48,6 +48,8 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: changeme
+      API_URL: http://localhost:8083/v1/insurance_endpoint
+      RESUME_URL: http://localhost:3000/
     depends_on:
       - postgres
     ports:

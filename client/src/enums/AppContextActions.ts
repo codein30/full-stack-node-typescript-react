@@ -1,9 +1,16 @@
 export enum AppContextActions {
     ToggleTheme = "THEME_THEME",
-    CreateNewItem = "CREATE_NEW_ITEM",
-    DeleteItem = "DELETE_ITEM",
     ToggleIsEditing = "TOGGLE_IS_EDITING",
-    EditItem = "EDIT_ITEM",
-    CreateNewInsurance = "CREATE_NEW_INSURANCE",
-
+    CreateParentItem = "CREATE_PARENT_ITEM",
+    DeleteParentItem = "DELETE_PARENT_ITEM",
+    EditParentItem = "EDIT_PARENT_ITEM",
+    LoadParentItem = "LOAD_PARENT_ITEM",
+    CreateChildItem = "CREATE_CHILD_ITEM",
+    DeleteChildItem = "DELETE_CHILD_ITEM",
+    EditChildItem = "EDIT_CHILD_ITEM",
+    GetInsurance = "GET_INSURANCE",
+    CreateInsurance = "CREATE_INSURANCE",
+    UpdateInsurance = "UPDATE_INSURANCE",
+    ValidateInsurance = "VALIDATE_INSURANCE",
+    DeleteInsurance = "DELETE_INSURANCE",
 }

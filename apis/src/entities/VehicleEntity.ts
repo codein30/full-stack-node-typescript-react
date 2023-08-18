@@ -2,7 +2,7 @@ import {
     Default,
     Required
 } from '@tsed/schema';
-import { ADRESS_TYPE } from '../types/index';
+import { VEHICLE_TYPE } from '../types/index';
 import {
     Entity,
     Column,
@@ -17,8 +17,8 @@ export class VehicleEntity {
     id: string;
 
     @Column()
-    @Default(ADRESS_TYPE.MAIN)
-    type: ADRESS_TYPE;
+    @Default(VEHICLE_TYPE.MAIN)
+    type: VEHICLE_TYPE;
 
     @Required()
     @Column()
@@ -36,6 +36,6 @@ export class VehicleEntity {
     @Column()
     model: string;
 
-    @ManyToOne(() => UserEntity, (user) => user.vehicles)
+    @ManyToOne(() => UserEntity, (user) => user.vehicles, { onDelete: 'CASCADE' })
     user: UserEntity;
 }

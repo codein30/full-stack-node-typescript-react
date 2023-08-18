@@ -26,7 +26,7 @@ export class DependentEntity {
   @Required()
   birthDate: Date;
 
-  @ManyToOne(() => UserEntity, (user) => user.dependents)
+  @ManyToOne(() => UserEntity, (user) => user.dependents, { onDelete: 'CASCADE' })
   user: UserEntity;
 
   // @OneToOne(()=> UserEntity)

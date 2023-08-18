@@ -9,6 +9,7 @@ import { VehicleModel } from "src/models/VehicleModel";
 
 export const toInsuranceDTO = (data: UserEntity) => {
     const {
+        id,
         firstName,
         lastName,
         birthDate,
@@ -22,9 +23,10 @@ export const toInsuranceDTO = (data: UserEntity) => {
     } = data;
 
     let insuranceResponse: InsuranceModel = {
+        userId: id,
         firstName,
         lastName,
-        birthDate,
+        birthDate: new Date(birthDate),
         type,
         expiration,
         dependents: [],
@@ -36,16 +38,18 @@ export const toInsuranceDTO = (data: UserEntity) => {
             ...insuranceResponse,
             dependents: dependents.map((dependent: DependentEntity) => {
                 const {
+                    id,
                     relationship,
                     firstName,
                     lastName,
                     birthDate
                 } = dependent;
                 return {
+                    id,
                     relationship,
                     firstName,
                     lastName,
-                    birthDate
+                    birthDate: new Date(birthDate),
                 } as UserModel;
             })
         }
@@ -55,16 +59,20 @@ export const toInsuranceDTO = (data: UserEntity) => {
             ...insuranceResponse,
             addresses: addresses.map((address: AddressEntity) => {
                 const {
+                    id,
                     type,
                     street,
                     city,
-                    zipCode
+                    zipCode,
+                    state
                 } = address;
                 return {
+                    id,
                     type,
                     street,
                     city,
-                    zipCode
+                    zipCode,
+                    state
                 } as AddressModel;
             })
         }
@@ -74,6 +82,7 @@ export const toInsuranceDTO = (data: UserEntity) => {
             ...insuranceResponse,
             vehicles: vehicles.map((vehicle: VehicleEntity) => {
                 const {
+                    id,
                     type,
                     vin,
                     year,
@@ -81,6 +90,7 @@ export const toInsuranceDTO = (data: UserEntity) => {
                     model
                 } = vehicle;
                 return {
+                    id,
                     type,
                     vin,
                     year,

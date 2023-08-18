@@ -1,9 +1,10 @@
 import { createContext } from "react";
 import { IItem } from "../interfaces/IItem";
+import { IPayload } from "../interfaces/IPayload";
 
 export const INITIAL_STATE = {
-    themeName: 'dark',
-    items: [] as IItem[],
+    themeName: 'light',
+    parentItem: JSON.parse(localStorage.getItem("userInsuranceApplication") || "{}") || {} as IItem,
 };
 
 export type InitialStateType = typeof INITIAL_STATE;
@@ -11,9 +12,17 @@ export type InitialStateType = typeof INITIAL_STATE;
 export const Context = createContext({
     state: INITIAL_STATE,
     toggleTheme: () => { },
-    createNewItem: () => { },
-    deleteItem: (id: string) => { },
     toggleIsEditing: (id: string) => { },
-    editItem: (payload: IItem) => { },
-    createNewInsurance: () => { },
+    createParentItem: () => { },
+    deleteParentItem: (id: string) => { },
+    editParentItem: (payload: IItem) => { },
+    loadParentItem: (payload: IItem) => { },
+    createChildItem: (payload: IPayload) => { },
+    deleteChildItem: (payload: IPayload) => { },
+    editChildItem: (payload: IPayload) => { },
+    getInsurance: (id: string) => { },
+    createInsurance: (payload: IItem) => { },
+    updateInsurance: (payload: IItem) => { },
+    validateInsurance: (payload: IItem) => { },
+    deleteInsurance: (id: string) => { },
 })

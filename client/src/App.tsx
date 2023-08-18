@@ -2,8 +2,8 @@ import { ThemeProvider } from "styled-components";
 import { Container, GlobalStyles } from "./styles/global";
 import { theme } from "./config/theme";
 import { Header } from "./components/header";
-import { ListItems } from "./components/list-items";
 import { useContextHook } from './context/hook';
+import { MainEntry } from "./components/main-entry";
 
 export const App = () => {
 
@@ -17,7 +17,7 @@ export const App = () => {
         <GlobalStyles />
         <Header />
         <Container>
-          <ListItems />
+          <MainEntry />
         </Container>
       </>
     </ThemeProvider>
