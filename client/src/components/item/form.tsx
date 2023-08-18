@@ -48,20 +48,6 @@ export const ItemForm = ({
 
     }
 
-    // const saveInnerRow = () => {
-    //     validateFields();
-    //     // if(validateFields()) editChildItem({parentItem: insuranceItem, childPayload: formState, childType: childConvertType(itemType.toLowerCase())});
-    // }
-    const validateFields = () => {
-        for(const [key, value] of Object.entries(formState)){
-            if(!value) {
-                alert(`Enter a ${key} for your ${itemType}`);
-                return false;
-            }
-        }
-        return true;
-    }
-
     return (
         <>
             <>

@@ -15,10 +15,6 @@ margin-bottom: 30px;
         color: ${({ theme }) => theme.color};
         font-size: 1.4rem;
     }
-
-    // > button {
-    //     margin-right: 15px;
-    // }
 }
 `;
 

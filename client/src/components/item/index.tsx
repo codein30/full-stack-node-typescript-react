@@ -1,13 +1,9 @@
-import pluralize from 'pluralize';
 import { Styles } from "./styles";
 import { Button } from "../button";
-
-import { PencilIcon } from "../icons/pencil";
 import { TrashIcon } from "../icons/trash";
 import { ItemForm } from "./form";
 import { useContextHook } from '../../context/hook';
 import { IItem } from "../../interfaces/IItem";
-import { ADDRESSES, DEPENDENTS, VEHICLES } from '../../utils/Constants';
 import { childConvertType } from '../../utils/helpers';
 
 interface IProps {

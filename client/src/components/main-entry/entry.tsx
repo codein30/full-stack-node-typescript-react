@@ -100,8 +100,19 @@ export const Entry = ({
         return rtObj;
     }
 
+    const validateFields = () => {
+        for(const [key, value] of Object.entries(formData)){
+            if(!value) {
+                alert(`Enter a ${key} for your ${formData}`);
+                return false;
+            }
+        }
+        return true;
+    }
+
     const createInsuranceApiCall = async () => {
         try {
+            if(!validateFields()) return;
             const httpData = transformRequestData(formData);
             const resumeUrl = await HttpClient.post(process.env.REACT_APP_API_URL, httpData, {header: {}}) || {} as IItem;
             window.location.href = resumeUrl;
@@ -113,6 +124,7 @@ export const Entry = ({
 
     const updateInsuranceApiCall = async () => {
         try {
+            if(!validateFields()) return;
             const httpData = transformRequestData(formData);
             const resumeUrl = await HttpClient.put(`${process.env.REACT_APP_API_URL}/${userId}`, httpData, {header: {}}) || {} as IItem;
             window.location.href = resumeUrl;
@@ -133,6 +145,7 @@ export const Entry = ({
 
     const validateInsuranceApiCall = async () => {
         try {
+            if(!validateFields()) return;
             const validateItem = await HttpClient.validate(process.env.REACT_APP_API_URL, formData) || {} as IItem;
             alert(`Validated item ${validateItem}`);
           } catch (error) {
@@ -140,13 +153,6 @@ export const Entry = ({
           }
     }
 
-    const invalidField = () => {
-        // for(const [key, value] of Object.entries(formData)){
-        //     if(value && value.length && value.length === 0) return key;
-        //     if(!value) return key;
-        // }
-        // return null;
-    }
     return (
         <>
         <Styles.Container>
